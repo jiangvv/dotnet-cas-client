@@ -55,6 +55,13 @@ namespace DotNetCasClient.Validation.Schema.Cas20
             get;
             set;
         }
+
+        [XmlElement("attributes")]
+        public object Attributes
+        {
+            get;
+            set;
+        }
     }
 }
 

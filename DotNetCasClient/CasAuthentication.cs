@@ -834,6 +834,7 @@ namespace DotNetCasClient
                 // Attempt to authenticate the ticket and resolve to an ICasPrincipal
                 principal = TicketValidator.Validate(ticket);
 
+                protoLogger.Info("principal: " + principal.Identity.Name);
                 // Save the ticket in the FormsAuthTicket.  Encrypt the ticket and send it as a cookie. 
                 casTicket = new CasAuthenticationTicket(
                     ticket,
@@ -857,6 +858,7 @@ namespace DotNetCasClient
                 FormsAuthenticationTicket formsAuthTicket = CreateFormsAuthenticationTicket(principal.Identity.Name, FormsAuthentication.FormsCookiePath, ticket, null, null);
                 SetAuthCookie(formsAuthTicket);
 
+                protoLogger.Info("formsAuthTicket: " + formsAuthTicket.UserData);
                 // Also save the ticket in the server store (if configured)
                 if (ServiceTicketManager != null)
                 {
